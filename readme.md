@@ -49,4 +49,4 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
 import scrapping_with_selenium as sc  # scrapping_with_selenium: past project which scrapes data from wuzzuf(check it in my past repo)
-``
+```
