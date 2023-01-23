@@ -1,6 +1,6 @@
 # Analysis of the Egyptian Job Market for Data Professionals
 #### Author: **Ziad Zakaria** 
-#### Date: **1/17/2023**
+#### Date: **1/23/2023**
 #
 
 ## What is this?
@@ -49,4 +49,41 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
 import scrapping_with_selenium as sc  # scrapping_with_selenium: past project which scrapes data from wuzzuf(check it in my past repo)
+```
+after scraping the data using scraper function, i have saved the pandas dataframe to excel sheet to analyze it instead of, scraping the webpages every time for analysis
+```
+# the function which scrapes the data for the firt 150
+df = sc.scraper("Data", 150, ["Data Engineer","Analyst", "Data Scientist", "Bi", "Business Intelligence","Data Entry"])
+```
+*Data frame head image*
+
+### **Data Cleaning**
+I kept only the job titles i am intersted in, then inserted them to their respected categories
+
+```
+table= table[
+table["job title"].str.contains("Data") |
+table["job title"].str.contains("Analyst") |
+table["job title"].str.contains("BI")
+] 
+```
+```
+# create a list of our conditions
+conditions = [
+table["job title"].str.contains("entry"),
+table["job title"].str.contains("Entry"),
+table["job title"].str.contains("Analyst"),
+table["job title"].str.contains("BI"),
+table["job title"].str.contains("Engineer"),
+table["job title"].str.contains("Scientist")
+]
+
+# create a list of the values we want to assign for each condition
+values = ['data entry', 'data entry', 'data analyst', 'bi developer','data engineer', 'data scientist']
+
+# create a new column and use np.select to assign values to it using our lists as arguments
+table['roles'] = np.select(conditions, values)
+
+# display updated DataFrame
+table.head()
 ```
