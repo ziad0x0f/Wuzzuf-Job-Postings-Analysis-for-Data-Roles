@@ -39,3 +39,14 @@ The dataset does follow the **ROCCC** approach:
 - Current:  the data is **Current**. 
 - Cited: the data is **Cited**, it is collected through [Wuzzuf](https://wuzzuf.net/jobs/egypt).
 #
+
+## 3. Process 
+importing the libraries 
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import seaborn as sns
+import scrapping_with_selenium as sc  # scrapping_with_selenium: past project which scrapes data from wuzzuf(check it in my past repo)
+``
