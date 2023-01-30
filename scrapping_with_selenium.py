@@ -30,7 +30,7 @@ def scraper(search_for , pages, keywords):
 		driver.get(url)
 
 		try:
-			job_roles = (list(map(get_text, driver.find_elements(By.XPATH, "//h2[@class='css-m604qf']/a"))))
+			job_roles = (list(map(getText(), driver.find_elements(By.XPATH, "//h2[@class='css-m604qf']/a"))))
 		except NoSuchElementException:
 			print("no jobs found")
 
@@ -64,7 +64,7 @@ def scraper(search_for , pages, keywords):
 			except NoSuchElementException:
 				open_positions.append("unknown")
 				
-			skills.append(list(map(get_text, driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a"))))
+			skills.append(list(map(getText(), driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a"))))
 
 	#return  pandas data frame
 	data = {"job title":job_title, 
