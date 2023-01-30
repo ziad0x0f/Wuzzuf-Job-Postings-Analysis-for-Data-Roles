@@ -64,7 +64,7 @@ def scraper(search_for , pages, keywords):
 			except NoSuchElementException:
 				open_positions.append("unknown")
 				
-			skills.append(list(map(get_text, driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a/span"))))
+			skills.append(map(get_text, driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a/span")))
 	
 	#return  pandas data frame
 	data = {"job title":job_title, 
@@ -77,7 +77,7 @@ def scraper(search_for , pages, keywords):
 	"open postions":open_positions}
 	 
 	df = pd.DataFrame(data)
-	
+
 	return df
 	
 # get text property from list elements
