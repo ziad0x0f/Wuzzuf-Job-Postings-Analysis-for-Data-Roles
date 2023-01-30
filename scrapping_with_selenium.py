@@ -64,7 +64,8 @@ def scraper(search_for , pages, keywords):
 			except NoSuchElementException:
 				open_positions.append("unknown")
 				
-			skills.append(map(get_text, driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a/span")))
+			for content in driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']"):
+				skills.append(content.text)
 	
 	#return  pandas data frame
 	data = {"job title":job_title, 
