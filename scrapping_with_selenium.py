@@ -30,7 +30,7 @@ def scraper(search_for , pages, keywords):
 		driver.get(url)
 
 		try:
-			job_roles = (list(map(getText(), driver.find_elements(By.XPATH, "//h2[@class='css-m604qf']/a"))))
+			job_roles = (list(map(get_text, driver.find_elements(By.XPATH, "//h2[@class='css-m604qf']/a"))))
 		except NoSuchElementException:
 			print("no jobs found")
 
