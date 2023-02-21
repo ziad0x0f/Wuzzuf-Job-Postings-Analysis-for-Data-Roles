@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from difflib import SequenceMatcher
 
 
-def scraper(search_for, pages, keywords):
+def scraper(search_for, pages, keywords, ratio):
 
 	job_title = []
 	job_id = []
@@ -41,7 +41,7 @@ def scraper(search_for, pages, keywords):
 
 		# search job roles that relate to the given keywords
 		for job in list(map(lambda x: x.lower(), job_roles)):
-			if any(is_string_similar(job, key, 0.6) for key in list(map(lambda x: x.lower(), keywords))):
+			if any(is_string_similar(job, key, ratio) for key in list(map(lambda x: x.lower(), keywords))):
 
 				job_title.append(driver
 								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div[@class='css-pkv5jc']/div[@class='css-laomuu']/h2[@class='css-m604qf']/a[@class='css-o171kl']")
