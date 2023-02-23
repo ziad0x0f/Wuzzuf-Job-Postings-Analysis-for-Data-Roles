@@ -36,34 +36,34 @@ def scraper(search_for, pages, keywords, ratio):
 		except NoSuchElementException:
 			print("no jobs found")
 
-		i = 1
+		#i = 1
 		links.clear()
 
 		# search job roles that relate to the given keywords
-		for job in list(map(lambda x: x.lower(), job_roles)):
+		for i, job in enumerate(list(map(lambda x: x.lower(), job_roles))):
 			if any(is_string_similar(job, key, ratio) for key in list(map(lambda x: x.lower(), keywords))):
 
 				job_title.append(driver
-								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div[@class='css-pkv5jc']/div[@class='css-laomuu']/h2[@class='css-m604qf']/a[@class='css-o171kl']")
+								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div[@class='css-pkv5jc']/div[@class='css-laomuu']/h2[@class='css-m604qf']/a[@class='css-o171kl']")
 								.text)
 				job_type.append(driver
-								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div[@class='css-pkv5jc']/div[@class='css-y4udm8']/div[@class='css-1lh32fc']/a[1]/span").text)
+								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div[@class='css-pkv5jc']/div[@class='css-y4udm8']/div[@class='css-1lh32fc']/a[1]/span").text)
 				company.append(driver
-								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div/div[@class='css-laomuu']/div/a").text)
+								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div/div[@class='css-laomuu']/div/a").text)
 				location.append(driver
-								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div/div[@class='css-laomuu']/div/span")
+								.find_element(By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div/div[@class='css-laomuu']/div/span")
 								.text)
 
 				try:
 					experience.append(driver.find_element(
-					By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div[@class='css-pkv5jc']/div[@class='css-y4udm8']/div[2]/span[1]").text)
+					By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div[@class='css-pkv5jc']/div[@class='css-y4udm8']/div[2]/span[1]").text)
 				except:
 					experience.append("· 0 Yrs of Exp")
 
 				links.append(driver.find_element(
-					By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i}]/div[@class='css-pkv5jc']/div[@class='css-laomuu']/h2[@class='css-m604qf']/a[@class='css-o171kl']").get_attribute("href"))
+					By.XPATH, f"//div[@class='css-1gatmva e1v1l3u10'][{i+1}]/div[@class='css-pkv5jc']/div[@class='css-laomuu']/h2[@class='css-m604qf']/a[@class='css-o171kl']").get_attribute("href"))
 
-				i += 1
+				#i += 1
 
 		# extract job details(job_id, salary, open positions, skills)
 		for id, link in enumerate(links):
@@ -78,8 +78,11 @@ def scraper(search_for, pages, keywords, ratio):
 			                      "//div[@class='css-bjn8wh']/div[@class='css-104dl8g']/div[@class='css-1wb134k']/span").text)[0]))
 
 			# append list of skills per job
-			content = [driver.find_element(By.XPATH, f"//a[@class='css-g65o95'][{i+1}]/span[@class='css-6to1q']/span[@class='css-tt12j1 e12tgh591']/span[@class='css-158icaa']").text 
-			for i in range(len(driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a")))]
+			content = [driver
+					  .find_element(By.XPATH, f"//a[@class='css-g65o95'][{i+1}]/span[@class='css-6to1q']/span[@class='css-tt12j1 e12tgh591']/span[@class='css-158icaa']")
+					  .text 
+					  for i in range(len(driver.find_elements(By.XPATH, "//div[@class='css-s2o0yh']/a")))]
+			
 			skills.append(content)
 
 	# return  pandas data frame
@@ -107,10 +110,12 @@ def is_string_similar(s1: str, s2: str, threshold: float = 0.8):
 
 
 # # uncomment this block if you want to run the script directly
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-# 	search_for = "data"
-# 	pages = 10
-# 	keywords = ["data analyst", "data engineer"]
-# 	df = scraper(search_for, pages, keywords)
-# 	print(df)
+	search_for = "data"
+	pages = 6
+	
+	jobs = ["Data analysis", "Data Analyst", "Business Analyst", "Data Engineer", "Data Scientist", "Bi developer", "Business Intelligence"]
+	
+	df = scraper(search_for, pages, jobs, ratio = 0.6)
+	print(df)
