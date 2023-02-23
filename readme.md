@@ -84,8 +84,7 @@ jobs = ["analyst",
 
 table = sc.scraper("Data", 150, jobs, 0.7)
 ```
-*Data frame head image*
-
+![data](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/before_clean.png?raw=true)
 ### **Data Cleaning**
 I kept only the job titles i am intersted in, then inserted them to their respected categories
 
@@ -147,8 +146,7 @@ values = ['entry level', 'junior', 'mid level', 'senior', 'team lead']
 
 df2['levels'] = np.select(conditions, values)
 ```
-*after cleaning image*
-
+![categorizing](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/after_categorizing.png?raw=true)
 there are three problems with the salaries column in the dataset:
 
 1. many companies didn't mention their jobs salaries and just wrote that it is *confidential*. even their is some companies wrote *male* or *female* in the salary section.
@@ -218,4 +216,5 @@ df2["salaries"] = df2["salaries"].apply(
 df2["salaries"] = df2["salaries"].round()
 ```
 the skills is not consistent as it has many repeated skills that resembels the same meaning but different spelling. like Excel & Microsoft Excel, sql server and Microsoft SQL Server, ...etc. so i have combined those repeated values using regular expressions and only kept the skill set that we are interested in within a new dataframe.
+![salary](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/Screenshot%202023-02-23%20192942.png?raw=true)
 
