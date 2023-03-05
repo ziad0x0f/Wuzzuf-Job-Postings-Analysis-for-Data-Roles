@@ -285,6 +285,8 @@ df_skills = df_skills[df_skills.skill.isin(values) == True]
 
 ### 1. What is the difference between job oppurtunties for every data role?
 
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/Available%20jobs%20dis.png)
+
 out of every 10 job postings there are:
 
 - about 6 open positions for data analyst or bussiness analyst
@@ -296,6 +298,7 @@ out of every 10 job postings there are:
 only **4%** of job postings is for data scientist role which is very low compared to other roles
 
 ### 2. What role that have the most chances for entry levels & juniors?
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/positions%20per%20role.png)
 
 - **31.7%** of job openings is for juniors and entry levels -
 
@@ -306,21 +309,28 @@ only **4%** of job postings is for data scientist role which is very low compare
 ### 3. top 4 cities with job openings 
 
 - Most of job opportunities is in cairo & giza governorates 
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/geo.png)
 
 ### 4. What is the role with the best salaries?
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/teamlead%20avg%20salaries.png)
 
 - the salaries data is not comprehensive, since we only have the team lead level that is present in all the roles. 
 
 - its pretty obvious that the **data engineer & scientist** roles get paid double or even triple the amount compared to the other roles.
 
 ### 5. what is the most wanted range of experience in the market?
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/oppurtunities%20for%20exp.png)
 
 - most of the vacancies are for the 3+ years of experience employees, representing **65%** of the available opportunities for data professionals.
 
 ### 6. What is the role with the best salaries with 3+ exp level?
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/midlevel%20salaries.png)
+
 - data engineer gain almost **30%** higher salary than data analyst & **twice** as much as bi developer
 
 ### 7. What are the most common skill tools in jobs description?
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/skill.png)
+
 - Due to data inconsistency, skills for data engineers and data scientists are very few. as a result, i will only consider skills for data analysts and bi developers
 
 - Suprisingly, that programming is the most wanted skill even for data analysts & powerbi is more in demand than excel
