@@ -119,14 +119,38 @@ df2 = df2[df2.roles.isin(values) == True]
 the next lines of code acheive the following:
 
 - extracting cities only from the location column
+- grouping giza divsions to giza governorate
 - cleaning companies names
 - changing experience column from this (· 2 - 4 Yrs of Exp
 ) to this (2-4)
 - categorizing every role to their experience level according to their respected years of experience in a new **levels** column
 
 ```python
+giza_gov = ["Dokki",
+"El-Haram",
+"Agouza",
+"El Ayyat",
+"El Badrashein",
+"And El Hawamdeya",
+"Giza",
+"El Omraniya",
+"El Wahat El Bahariya",
+"El Warraq",
+"Sheikh Zayed",
+"Smart Village",
+"Zamalek",
+"El Saff",
+"Atfeh",
+"Ossim",
+"Bulaq",
+"Imbaba",
+"Kerdasa",
+"6th of October"]
+
 # extract cities only
 df2["location"] = df2["location"].map(lambda x: x.split(',')[0])
+
+df2["location"] = df2["location"].apply(lambda loc: "Giza" if loc in giza_gov else loc)
 
 # clean companies names & extract experience range
 df2["company"] = df2["company"].str.replace(" -", "")
@@ -218,4 +242,106 @@ df2["salaries"] = df2["salaries"].apply(
 df2["salaries"] = df2["salaries"].round()
 ```
 the skills is not consistent as it has many repeated skills that resembels the same meaning but different spelling. like Excel & Microsoft Excel, sql server and Microsoft SQL Server, ...etc. so i have combined those repeated values using regular expressions and only kept the skill set that we are interested in within a new dataframe.
+```python
+    df_noskill = df2.drop(columns=["skill"]).drop_duplicates()
+```
+```python
+df_skills = df2.copy()
+# continue the list of conditions
+conditions = [
+    (df_skills["skill"].str.contains("(?i)excel")
+     | df_skills["skill"].str.contains("(?i)office")
+     | df_skills["skill"].str.contains("(?i)Accounting")),
 
+    (df_skills["skill"].str.contains("(?i)power bi")
+     | df_skills["skill"].str.fullmatch("(?i)bi")),
+
+    (df_skills["skill"].str.contains("(?i)sql server")
+     | df_skills["skill"].str.fullmatch("(?i)ssis")
+     | df_skills["skill"].str.fullmatch("(?i)ssas")
+     | df_skills["skill"].str.fullmatch("(?i)ssrs")),
+
+    df_skills["skill"].str.fullmatch("(?i)sql"),
+
+    (df_skills["skill"].str.contains("(?i)computer science")
+     | df_skills["skill"].str.fullmatch("(?i)coding")
+     | df_skills["skill"].str.fullmatch("(?i)software")),
+
+    df_skills["skill"].str.fullmatch("(?i)Tableau"),
+
+    df_skills["skill"].str.fullmatch("(?i)Statistics"),
+
+    df_skills["skill"].str.fullmatch("(?i)python"),
+
+    df_skills["skill"].str.contains("(?i)spark")
+]
+
+values = ['excel', 'power bi', 'sql server', 'sql',
+          'programming', 'tableau', 'Statistics', 'python', 'spark']
+
+df_skills['skill'] = np.select(conditions, values)
+df_skills = df_skills[df_skills.skill.isin(values) == True]
+```
+## 4. Analyze
+
+### 1. What is the difference between job oppurtunties for every data role?
+
+out of every 10 job postings there are:
+
+- about 6 open positions for data analyst or bussiness analyst
+
+- 2  open positions for a data engineer
+
+- 1  open position for a Bi analyst
+
+only **4%** of job postings is for data scientist role which is very low compared to other roles
+
+### 2. What role that have the most chances for entry levels & juniors?
+
+- **31.7%** of job openings is for juniors and entry levels -
+
+- **84.6%** of these jobs is for data analysts
+
+- juniors & entry levels have much less oppurtunities as a data engineer or as a data scientist roles 
+
+### 3. top 4 cities with job openings 
+
+- Most of job opportunities is in cairo & giza governorates 
+
+### 4. What is the role with the best salaries?
+
+- the salaries data is not comprehensive, since we only have the team lead level that is present in all the roles. 
+
+- its pretty obvious that the **data engineer & scientist** roles get paid double or even triple the amount compared to the other roles.
+
+### 5. what is the most wanted range of experience in the market?
+
+- most of the vacancies are for the 3+ years of experience employees, representing **65%** of the available opportunities for data professionals.
+
+### 6. What is the role with the best salaries with 3+ exp level?
+- data engineer gain almost **30%** higher salary than data analyst & **twice** as much as bi developer
+
+### 7. What are the most common skill tools in jobs description?
+- Due to data inconsistency, skills for data engineers and data scientists are very few. as a result, i will only consider skills for data analysts and bi developers
+
+- Suprisingly, that programming is the most wanted skill even for data analysts & powerbi is more in demand than excel
+
+## 5. Share
+
+the detailed code and report is shared on github
+
+## 6. Act
+
+- Most of the available vacancies are for data and business analysts
+
+- If you are shifting from another career, you should consider data analysis role as it has the most open vacancies for entry levels and juniors
+
+- If you are looking for a fulltime from office job, you should relocate to cairo or giza divisions
+
+- After collecting 2 year of experience as a data analyst, i recommend to acquire data engineering and science skills, due to high salary earnings at this experience level
+
+- Develope your programming skills(Sql, DBMS, python or R), since The demand for it is constantly increasing
+
+
+*sorry for any vocab or grammar mistakes, i believe it is a lot*
+ 

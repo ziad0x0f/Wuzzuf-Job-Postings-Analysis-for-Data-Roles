@@ -110,12 +110,12 @@ def is_string_similar(s1: str, s2: str, threshold: float = 0.8):
 
 
 # # uncomment this block if you want to run the script directly
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-	search_for = "data"
-	pages = 6
+# 	search_for = "data"
+# 	pages = 6
 	
-	jobs = ["Data analysis", "Data Analyst", "Business Analyst", "Data Engineer", "Data Scientist", "Bi developer", "Business Intelligence"]
+# 	jobs = ["Data analysis", "Data Analyst", "Business Analyst", "Data Engineer", "Data Scientist", "Bi developer", "Business Intelligence"]
 	
-	df = scraper(search_for, pages, jobs, ratio = 0.6)
-	print(df)
+# 	df = scraper(search_for, pages, jobs, ratio = 0.6)
+# 	print(df)
