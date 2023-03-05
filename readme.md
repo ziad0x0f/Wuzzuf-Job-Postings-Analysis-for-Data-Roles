@@ -307,9 +307,9 @@ only **4%** of job postings is for data scientist role which is very low compare
 - juniors & entry levels have much less oppurtunities as a data engineer or as a data scientist roles 
 
 ### 3. top 4 cities with job openings 
+![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/geo.png)
 
 - Most of job opportunities is in cairo & giza governorates 
-![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/geo.png)
 
 ### 4. What is the role with the best salaries?
 ![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/teamlead%20avg%20salaries.png)
@@ -352,5 +352,5 @@ the detailed code and report is shared on github
 - Develope your programming skills(Sql, DBMS, python or R), since The demand for it is constantly increasing
 
 
-*sorry for any vocab or grammar mistakes, i believe it is a lot*
+*sorry for any vocab or grammar mistakes, i believe it is a lot* :rofl:	
  
