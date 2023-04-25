@@ -49,10 +49,10 @@ Data Source:
 
 
 The dataset does follow the **ROCCC** approach:
-- Reliability: The can be considered as **Reliable** becouse it produces nearly 41 records of data from Wuzzuf & 90 from Egypt's Tech Scene which is enough to represent the population according to the central limit theorem.  
+- Reliability: The can be considered as **Reliable** because it produces nearly 41 records of data from Wuzzuf & 90 from Egypt's Tech Scene which is enough to represent the population according to the central limit theorem.  
 
 - Original: The data is **Original** since it is collected from wuzzuf's website directly through web scraping & survey from the egyptian workers.
-- Comprehensive: the data is **Not Compehensive**  since the data that is collected from Egypt's Tech Scene is biased toward the network and the companies the data provider interested in.
+- Comprehensive: the data is **Not Comprehensive**  since the data that is collected from Egypt's Tech Scene is biased toward the network and the companies the data provider interested in.
 - Current:  the scraped data from wuzzuf is *current* but the data from Egypt's Tech Scene is not *current* so, the overall data can be considered as **Not Current**
 - Cited: the data is **Cited**, it is collected through [Wuzzuf](https://wuzzuf.net/jobs/egypt) & [Egypt's Tech Scene 2022](https://lookerstudio.google.com/reporting/fc89c7a2-5dd9-4954-afc3-3ea7f3c7241a/page/DUS6C).
 #
@@ -72,7 +72,7 @@ import scrapping_with_selenium as sc
 ```
 after scraping the data using scraper function, i have saved the pandas dataframe to excel sheet to analyze it instead of scraping the webpages every time for analysis
 ```python
-# the function which scrapes the data for the firt 150
+# the function which scrapes the data for the first 150
 jobs = ["analyst",
         "Data analysis",
         "Data Analyst",
@@ -86,7 +86,7 @@ table = sc.scraper("Data", 150, jobs, 0.7)
 ```
 ![data](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/before_clean.png?raw=true)
 ### **Data Cleaning**
-I kept only the job titles i am intersted in, then inserted them to their respected categories
+I kept only the job titles i am interested in, then inserted them to their respected categories
 
 ```python
 df2 = df.copy()
@@ -115,10 +115,10 @@ df2['roles'] = np.select(conditions, values)
 df2 = df2[df2.roles.isin(values) == True]
 
 ```
-the next lines of code acheive the following:
+the next lines of code achieve the following:
 
 - extracting cities only from the location column
-- grouping giza divsions to giza governorate
+- grouping giza divisions to giza governorate
 - cleaning companies names
 - changing experience column from this (· 2 - 4 Yrs of Exp
 ) to this (2-4)
@@ -175,13 +175,13 @@ there are three problems with the salaries column in the dataset:
 
 1. many companies didn't mention their jobs salaries and just wrote that it is *confidential*. even their is some companies wrote *male* or *female* in the salary section.
 
-2. some companies mention a range for their salary insted of single number.
+2. some companies mention a range for their salary instead of single number.
 
 3. too few companies provided their salaries as a single number
 
 I have done the following to fix this issues:
 
-1. i have replaced the confidemtial values with a single number based on the role & the experience level with the aid of the Egypt's Tech Scene data.
+1. i have replaced the confidential values with a single number based on the role & the experience level with the aid of the Egypt's Tech Scene data.
 
 2. to make the data consistent, using regular expression methodology in python, i have extracted the two numbers in the salary range provided by the companies then replaced with their mean value.
 
@@ -283,13 +283,13 @@ df_skills = df_skills[df_skills.skill.isin(values) == True]
 ```
 ## 4. Analyze
 
-### 1. What is the difference between job oppurtunties for every data role?
+### 1. What is the difference between job opportunities for every data role?
 
 ![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/Available%20jobs%20dis.png)
 
 out of every 10 job postings there are:
 
-- about 6 open positions for data analyst or bussiness analyst
+- about 6 open positions for data analyst or business analyst
 
 - 2  open positions for a data engineer
 
@@ -304,12 +304,12 @@ only **4%** of job postings is for data scientist role which is very low compare
 
 - **84.6%** of these jobs is for data analysts
 
-- juniors & entry levels have much less oppurtunities as a data engineer or as a data scientist roles 
+- juniors & entry levels have much less opportunities as a data engineer or as a data scientist roles 
 
 ### 3. top 4 cities with job openings 
 ![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/geo.png)
 
-- Most of job opportunities is in cairo & giza governorates 
+- Most of job opportunities is in cairo & giza governorate 
 
 ### 4. What is the role with the best salaries?
 ![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/teamlead%20avg%20salaries.png)
@@ -328,12 +328,15 @@ only **4%** of job postings is for data scientist role which is very low compare
 
 - data engineer gain almost **30%** higher salary than data analyst & **twice** as much as bi developer
 
-### 7. What are the most common skill tools in jobs description?
+### 7. What is the estimate of a certain data role salary?
+
+
+### 8. What are the most common skill tools in jobs description?
 ![](https://github.com/ziad0x0f/Analysis-of-the-Egyptian-Market-for-Data-Specialist-Jobs/blob/main/imgs/skill.png)
 
 - Due to data inconsistency, skills for data engineers and data scientists are very few. as a result, i will only consider skills for data analysts and bi developers
 
-- Suprisingly, that programming is the most wanted skill even for data analysts & powerbi is more in demand than excel
+- Surprisingly, that programming is the most wanted skill even for data analysts & powerbi is more in demand than excel
 
 ## 5. Share
 
