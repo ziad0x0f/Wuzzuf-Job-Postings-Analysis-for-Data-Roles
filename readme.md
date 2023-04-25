@@ -330,7 +330,9 @@ only **4%** of job postings is for data scientist role which is very low compare
 
 ### 7. What is the estimate of a certain data role salary?
 - Since the data provided is relatively small, we will do bootstrapping to find the estimate with 95% confidence interval
+
 ![](https://github.com/ziad0x0f/Wuzzuf-Job-Postings-Analysis-for-Data-Roles/blob/main/imgs/Estimated%20data%20analyst%20salary%20distribution.png)
+
 ![](https://github.com/ziad0x0f/Wuzzuf-Job-Postings-Analysis-for-Data-Roles/blob/main/imgs/Estimated%20data%20role%20salary%20distribution.png)
 
 ### 8. What are the most common skill tools in jobs description?
